@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Machine Learning</title>
+</head>
+
+<body>
+
+<form action='predict' method='POST'>
+    {% csrf_token %}
+
+    <fieldset>
+        <legend>Linear Regression</legend>
+        <label for='species'>Species:</label>
+        <select name='species'>
+            {% for s in species %}
+                <option value={{s}}>{{s}}</option>
+            {% endfor %}
+        </select><br>
+
+        <label for='vertical'>Vertical Length (cm) </label>
+        <input type='text' name='vertical'><br>
+
+        <label for='diagonal'>Diagonal Length (cm) </label>
+        <input type='text' name='diagonal'><br>
+
+        <label for='cross'>Cross Length (cm) </label>
+        <input type='text' name='cross'><br>
+
+        <label for='height'>Height (cm) </label>
+        <input type='text' name='height'><br>
+        
+        <label for='width'>Diagonal Width (cm) </label>
+        <input type='text' name='width'><br>
+
+        <input type='submit' value='Submit'>   
+    </fieldset>
+</form>
+
+{% if result != None %}
+<p>Weight: {{result}} g</p>
+{% endif %}
+
+</body>
+</html>
